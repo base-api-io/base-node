@@ -1,4 +1,5 @@
-const { Client } = require("../src/Client");
+const { Client } = require("../../src/Client");
+
 const nock = require("nock");
 
 describe("Users Endpoint", () => {
@@ -21,6 +22,7 @@ describe("Users Endpoint", () => {
         "123456",
         "123456"
       );
+
       expect(user).toEqual(userData);
     });
   });

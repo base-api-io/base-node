@@ -26,23 +26,25 @@ class Endpoint {
   }
 
   async request(method, path, data) {
+    let response;
+
     try {
-      const response = await needle(method, `${this.url}/v1/${path}`, data, {
+      response = await needle(method, `${this.url}/v1/${path}`, data, {
         multipart: data && method !== "GET",
         headers: {
           Authorization: `Bearer ${this.access_token}`
         }
       });
-
-      if (response.statusCode === 401) {
-        throw new Unauthorized();
-      } else if (response.statusCode === 422) {
-        throw new InvalidRequest(JSON.parse(response.body));
-      } else {
-        return response;
-      }
     } catch (error) {
       throw new UnkownError(error);
+    }
+
+    if (response.statusCode === 401) {
+      throw new Unauthorized();
+    } else if (response.statusCode === 422) {
+      throw new InvalidRequest(JSON.parse(response.body));
+    } else {
+      return response;
     }
   }
 }

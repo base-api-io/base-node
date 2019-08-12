@@ -10,7 +10,6 @@ class InvalidRequest extends Error {
 class UnkownError extends Error {
   constructor(error) {
     super();
-    console.log(error);
     this.error = error;
   }
 }
