@@ -20,12 +20,13 @@ class Images extends Endpoint {
   }
 
   imageUrl(id, quality, format, resize, crop) {
-    const params = {}
-
     Check.assert.maybe.like(crop, {top: 0, left: 0, width: 0, height: 0})
     Check.assert.maybe.like(resize, {width: 0, height: 0})
     Check.assert.maybe.number(quality)
     Check.assert.maybe.string(format)
+    Check.assert.maybe.string(id)
+
+    const params = {}
 
     if (quality) {
       params.quality = quality
@@ -47,10 +48,14 @@ class Images extends Endpoint {
   }
 
   get(id) {
+    Check.assert.maybe.string(id)
+
     return this.requestJSON("GET", `images/${id}`);
   }
 
   delete(id) {
+    Check.assert.maybe.string(id)
+
     return this.requestJSON("DELETE", `images/${id}`);
   }
 }
