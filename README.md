@@ -1,5 +1,7 @@
 # Base
 
+[![npm version](https://badge.fury.io/js/base-api-io.svg)](https://badge.fury.io/js/base-api-io)
+
 Node.js client for the [Base API](https://www.base-api.io) service, with it you
 can manage authentication, email sending, files and images of your application.
 
