@@ -5,15 +5,18 @@ const Endpoint = require("../Endpoint");
 
 class Files extends Endpoint {
   create(file) {
-    Check.assert.maybe.like(file, { file: "/path/to/file", content_type: "text/plain" });
+    Check.assert.maybe.like(file, {
+      file: "/path/to/file",
+      content_type: "text/plain"
+    });
 
     return this.requestJSON("POST", "files", {
-      file: file,
+      file: file
     });
   }
 
   downloadUrl(id) {
-    return `${this.url}/v1/files/${id}/download`
+    return `${this.url}/v1/files/${id}/download`;
   }
 
   async download(id) {

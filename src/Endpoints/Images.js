@@ -6,7 +6,10 @@ const Endpoint = require("../Endpoint");
 
 class Images extends Endpoint {
   create(image) {
-    Check.assert.maybe.like(image, { file: "/path/to/image.jpg", content_type: "image/jpg" });
+    Check.assert.maybe.like(image, {
+      file: "/path/to/image.jpg",
+      content_type: "image/jpg"
+    });
 
     return this.requestJSON("POST", "images", {
       image: image

@@ -16,9 +16,10 @@ describe("files Endpoint", () => {
         .post("/v1/files")
         .reply(200, JSON.stringify(data));
 
-      const file = await client.files.create(
-        { file: "test/fixtures/file", content_type: "text/plain" }
-      );
+      const file = await client.files.create({
+        file: "test/fixtures/file",
+        content_type: "text/plain"
+      });
 
       expect(file).toEqual(data);
     });
@@ -52,11 +53,9 @@ describe("files Endpoint", () => {
     test("it returns the url", () => {
       const url = client.files.downloadUrl("file_id");
 
-      expect(url).toEqual(
-        "https://api.base-api.io/v1/files/file_id/download"
-      );
+      expect(url).toEqual("https://api.base-api.io/v1/files/file_id/download");
     });
-  })
+  });
 
   describe("Downloading the file", () => {
     test("it returns the file", async () => {
@@ -68,5 +67,5 @@ describe("files Endpoint", () => {
 
       expect(body.toString()).toEqual("BLAH");
     });
-  })
+  });
 });

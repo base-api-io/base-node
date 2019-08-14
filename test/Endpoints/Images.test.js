@@ -15,9 +15,10 @@ describe("Images Endpoint", () => {
         .post("/v1/images")
         .reply(200, JSON.stringify(imageData));
 
-      const image = await client.images.create(
-        { file: "test/fixtures/file", content_type: "text/plain" }
-      );
+      const image = await client.images.create({
+        file: "test/fixtures/file",
+        content_type: "text/plain"
+      });
 
       expect(image).toEqual(imageData);
     });

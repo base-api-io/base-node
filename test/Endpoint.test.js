@@ -25,7 +25,7 @@ describe("Endpoint", () => {
         .reply(401, "");
 
       try {
-        const response = await endpoint.request("GET", "");
+        await endpoint.request("GET", "");
         fail("This test failed!");
       } catch (error) {
         expect(error).toBeInstanceOf(Errors.Unauthorized);
@@ -40,7 +40,7 @@ describe("Endpoint", () => {
         .reply(422, '{"test":"TEST"}');
 
       try {
-        const response = await endpoint.request("GET", "");
+        await endpoint.request("GET", "");
         fail("This test failed!");
       } catch (error) {
         expect(error).toBeInstanceOf(Errors.InvalidRequest);

@@ -7,7 +7,7 @@ describe("Users Endpoint", () => {
 
   const data = {
     created_at: new Date(),
-    from: "test@user.com",
+    from: "test@user.com"
   };
 
   describe("Sending an email", () => {
