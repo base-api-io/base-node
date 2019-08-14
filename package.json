@@ -1,6 +1,6 @@
 {
-  "name": "base-node",
-  "version": "1.0.0",
+  "name": "base-api-io",
+  "version": "0.1.0",
   "description": "NodeJS client for the Base API",
   "main": "index.js",
   "repository": "https://github.com/base-api-io/base-node",
