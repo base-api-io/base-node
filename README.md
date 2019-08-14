@@ -5,7 +5,13 @@ can manage authentication, email sending, files and images of your application.
 
 ## Installation
 
-Add the dependency to your `package.json`: `yarn add base-api-io` or `npm install base-api-io --save`
+Add the dependency to your `package.json` with:
+
+`yarn add base-api-io`
+
+or
+
+`npm install base-api-io --save`
 
 ## Usage
 
@@ -22,7 +28,7 @@ Add the dependency to your `package.json`: `yarn add base-api-io` or `npm instal
 
    ```javascript
    client =
-     Client.new(access_token: "your_access_token")
+     Client.new("your_access_token")
    ```
 
 All functions return promises so you can chain them or just `await` them.
@@ -116,8 +122,8 @@ file =
 url =
   await client.files.downloadUrl("file_id")
 
-// Download the file by id into an IO
-io =
+// Download the file by id into a Buffer
+buffer =
   await client.files.download("file_id")
 ```
 
