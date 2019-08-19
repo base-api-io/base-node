@@ -1,6 +1,6 @@
-const Check = require("check-types");
+const Check = require('check-types');
 
-const Endpoint = require("../Endpoint");
+const Endpoint = require('../Endpoint');
 
 class Emails extends Endpoint {
   send(subject, from, to, html, text) {
@@ -11,12 +11,12 @@ class Emails extends Endpoint {
     Check.assert.string(from);
     Check.assert.string(to);
 
-    return this.requestJSON("POST", "email", {
-      subject: subject,
-      html: html,
-      text: text,
-      from: from,
-      to: to
+    return this.requestJSON('POST', 'email', {
+      subject,
+      html,
+      text,
+      from,
+      to,
     });
   }
 }

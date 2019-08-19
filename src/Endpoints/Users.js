@@ -1,6 +1,6 @@
-const Check = require("check-types");
+const Check = require('check-types');
 
-const Endpoint = require("../Endpoint");
+const Endpoint = require('../Endpoint');
 
 class Users extends Endpoint {
   create(email, password, confirmation) {
@@ -8,23 +8,23 @@ class Users extends Endpoint {
     Check.assert.string(password);
     Check.assert.string(email);
 
-    return this.requestJSON("POST", "users", {
-      confirmation: confirmation,
-      password: password,
-      email: email
+    return this.requestJSON('POST', 'users', {
+      confirmation,
+      password,
+      email,
     });
   }
 
   get(id) {
     Check.assert.string(id);
 
-    return this.requestJSON("GET", `users/${id}`);
+    return this.requestJSON('GET', `users/${id}`);
   }
 
   delete(id) {
     Check.assert.string(id);
 
-    return this.requestJSON("DELETE", `users/${id}`);
+    return this.requestJSON('DELETE', `users/${id}`);
   }
 }
 

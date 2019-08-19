@@ -1,17 +1,17 @@
-const Check = require("check-types");
-const Needle = require("needle");
+const Check = require('check-types');
+const Needle = require('needle');
 
-const Endpoint = require("../Endpoint");
+const Endpoint = require('../Endpoint');
 
 class Files extends Endpoint {
   create(file) {
     Check.assert.maybe.like(file, {
-      file: "/path/to/file",
-      content_type: "text/plain"
+      file: '/path/to/file',
+      content_type: 'text/plain',
     });
 
-    return this.requestJSON("POST", "files", {
-      file: file
+    return this.requestJSON('POST', 'files', {
+      file,
     });
   }
 
@@ -23,7 +23,7 @@ class Files extends Endpoint {
     Check.assert.string(id);
 
     const url = this.downloadUrl(id);
-    const response = await Needle("GET", url);
+    const response = await Needle('GET', url);
 
     return response.body;
   }
@@ -31,13 +31,13 @@ class Files extends Endpoint {
   get(id) {
     Check.assert.string(id);
 
-    return this.requestJSON("GET", `files/${id}`);
+    return this.requestJSON('GET', `files/${id}`);
   }
 
   delete(id) {
     Check.assert.string(id);
 
-    return this.requestJSON("DELETE", `files/${id}`);
+    return this.requestJSON('DELETE', `files/${id}`);
   }
 }
 

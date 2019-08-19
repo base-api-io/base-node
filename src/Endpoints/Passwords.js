@@ -1,13 +1,13 @@
-const Check = require("check-types");
+const Check = require('check-types');
 
-const Endpoint = require("../Endpoint");
+const Endpoint = require('../Endpoint');
 
 class Passwords extends Endpoint {
   forgotPassword(email) {
     Check.assert.string(email);
 
-    return this.requestJSON("POST", "password", {
-      email: email
+    return this.requestJSON('POST', 'password', {
+      email,
     });
   }
 
@@ -16,10 +16,10 @@ class Passwords extends Endpoint {
     Check.assert.string(confirmation);
     Check.assert.string(password);
 
-    return this.requestJSON("PUT", "password", {
+    return this.requestJSON('PUT', 'password', {
       forgot_password_token: forgotPasswordToken,
-      confirmation: confirmation,
-      password: password
+      confirmation,
+      password,
     });
   }
 }

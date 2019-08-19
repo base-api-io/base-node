@@ -15,7 +15,7 @@ class UnkownError extends Error {
 }
 
 module.exports = {
-  InvalidRequest: InvalidRequest,
-  Unauthorized: Unauthorized,
-  UnkownError: UnkownError
+  InvalidRequest,
+  Unauthorized,
+  UnkownError,
 };

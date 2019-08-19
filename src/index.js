@@ -1,3 +1,6 @@
-const Client = require("./Client");
+const { Unauthorized, InvalidRequest, UnkownError } = require('./Errors');
+const Client = require('./Client');
 
-module.exports = { Client }
+module.exports = {
+  Client, Unauthorized, InvalidRequest, UnkownError,
+};
