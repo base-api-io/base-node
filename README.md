@@ -55,6 +55,11 @@ email =
 Using the `users` endpoint  on the client you can create / get or delete users:
 
 ```javascript
+// Listing users
+users = await client.users.list()
+users.items          // The array of users
+users.metadata.count //The metadata object containing the total count
+
 // Create a user with email / password
 user =
   await client.users.create(
@@ -105,6 +110,11 @@ user =
 Using the `files` endpoint on the client you can create / get / delete or download files:
 
 ```javascript
+// Listing files
+files = await client.files.list()
+files.items          // The array of files
+files.metadata.count //The metadata object containing the total count
+
 // Create a file
 file =
   await client.files.create({
@@ -134,6 +144,11 @@ buffer =
 Using the `images` endpoint on the client you can create / get / delete or process images:
 
 ```javascript
+// Listing images
+images = await client.images.list()
+images.items          // The array of images
+images.metadata.count //The metadata object containing the total count
+
 // Create an image
 image =
   await client.images.create({

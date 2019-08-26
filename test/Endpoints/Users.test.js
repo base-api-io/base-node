@@ -11,6 +11,25 @@ describe('Users Endpoint', () => {
     id: 'id',
   };
 
+  describe('Listing users', () => {
+    test('returns a list of users', async () => {
+      nock('https://api.base-api.io')
+        .get('/v1/users?per_page=10&page=1')
+        .reply(200, JSON.stringify({
+          items: [userData],
+          metadata: {
+            count: 1,
+          },
+        }));
+
+      const response = await client.users.list();
+
+      expect(response.metadata.count).toEqual(1);
+      expect(response.items.length).toEqual(1);
+      expect(response.items[0]).toEqual(userData);
+    });
+  });
+
   describe('Creating a user', () => {
     test('it creates a user', async () => {
       nock('https://api.base-api.io')

@@ -5,6 +5,16 @@ const Needle = require('needle');
 const Endpoint = require('../Endpoint');
 
 class Images extends Endpoint {
+  list(page = 1, perPage = 10) {
+    Check.assert.number(page);
+    Check.assert.number(perPage);
+
+    return this.requestJSON('GET', 'images', {
+      per_page: perPage,
+      page,
+    });
+  }
+
   create(image) {
     Check.assert.maybe.like(image, {
       file: '/path/to/image.jpg',

@@ -3,6 +3,16 @@ const Check = require('check-types');
 const Endpoint = require('../Endpoint');
 
 class Users extends Endpoint {
+  list(page = 1, perPage = 10) {
+    Check.assert.number(page);
+    Check.assert.number(perPage);
+
+    return this.requestJSON('GET', 'users', {
+      per_page: perPage,
+      page,
+    });
+  }
+
   create(email, password, confirmation) {
     Check.assert.string(confirmation);
     Check.assert.string(password);

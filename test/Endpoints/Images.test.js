@@ -9,6 +9,25 @@ describe('Images Endpoint', () => {
     image: 'image',
   };
 
+  describe('Listing images', () => {
+    test('returns a list of images', async () => {
+      nock('https://api.base-api.io')
+        .get('/v1/images?per_page=10&page=1')
+        .reply(200, JSON.stringify({
+          items: [imageData],
+          metadata: {
+            count: 1,
+          },
+        }));
+
+      const response = await client.images.list();
+
+      expect(response.metadata.count).toEqual(1);
+      expect(response.items.length).toEqual(1);
+      expect(response.items[0]).toEqual(imageData);
+    });
+  });
+
   describe('Creating a image', () => {
     test('it creates a image', async () => {
       nock('https://api.base-api.io')

@@ -4,6 +4,16 @@ const Needle = require('needle');
 const Endpoint = require('../Endpoint');
 
 class Files extends Endpoint {
+  list(page = 1, perPage = 10) {
+    Check.assert.number(page);
+    Check.assert.number(perPage);
+
+    return this.requestJSON('GET', 'files', {
+      per_page: perPage,
+      page,
+    });
+  }
+
   create(file) {
     Check.assert.maybe.like(file, {
       file: '/path/to/file',
