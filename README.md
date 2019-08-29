@@ -65,11 +65,19 @@ user =
   await client.users.create(
     "test@user.com",
     "12345",
-    "12345")
+    "12345",
+    { age: 32 })
 
 // Get a users details by the id
 user =
   await client.users.get("user_id")
+
+// Update a users email / custom data
+user =
+  await client.users.update(
+    "user_id",
+    "test@user.com",
+    { age: 32 })
 
 // Delete a user by id
 user =
