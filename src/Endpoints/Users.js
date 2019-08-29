@@ -19,8 +19,8 @@ class Users extends Endpoint {
     Check.assert.string(email);
 
     return this.requestJSON('POST', 'users', {
+      custom_data: JSON.stringify(custom_data),
       confirmation,
-      custom_data,
       password,
       email,
     });
@@ -31,7 +31,7 @@ class Users extends Endpoint {
     Check.assert.string(id);
 
     return this.requestJSON('POST', `users/${id}`, {
-      custom_data,
+      custom_data: JSON.stringify(custom_data),
       email,
     });
   }
