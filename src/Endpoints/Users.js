@@ -13,14 +13,25 @@ class Users extends Endpoint {
     });
   }
 
-  create(email, password, confirmation) {
+  create(email, password, confirmation, custom_data = null) {
     Check.assert.string(confirmation);
     Check.assert.string(password);
     Check.assert.string(email);
 
     return this.requestJSON('POST', 'users', {
       confirmation,
+      custom_data,
       password,
+      email,
+    });
+  }
+
+  update(id, email = null, custom_data = null) {
+    Check.assert.maybe.string(email);
+    Check.assert.string(id);
+
+    return this.requestJSON('POST', `users/${id}`, {
+      custom_data,
       email,
     });
   }

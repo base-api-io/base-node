@@ -40,6 +40,23 @@ describe('Users Endpoint', () => {
         'test@user.com',
         '123456',
         '123456',
+        { age: 32 },
+      );
+
+      expect(user).toEqual(userData);
+    });
+  });
+
+  describe('Updating a user', () => {
+    test('it updates a user', async () => {
+      nock('https://api.base-api.io')
+        .post('/v1/users/user_id')
+        .reply(200, JSON.stringify(userData));
+
+      const user = await client.users.update(
+        'user_id',
+        'test@user.com',
+        { age: 32 },
       );
 
       expect(user).toEqual(userData);
