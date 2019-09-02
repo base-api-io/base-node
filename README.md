@@ -197,6 +197,12 @@ list =
 list =
   await client.mailingLists.unsubscribe('mailing_list_id', 'test@user.com')
 
+// Get a public unsubscribe url for the given mailing list and email which
+// when click unsubscribes a user from the mailing list and redirects to the
+// unsubscribe_redirect_url of the list.
+url =
+  client.mailingLists.unsubscribeUrl('mailing_list_id', 'test@user.com')
+
 // Send the same email to all of the subscribers
 results =
   await client.mailingLists.send(
