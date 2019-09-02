@@ -17,6 +17,38 @@ describe('Mailing Lists Endpoint', () => {
     id: 'id',
   };
 
+  describe('Listing mailing lists', () => {
+    test('returns a list of mailing lists', async () => {
+      nock('https://api.base-api.io')
+        .get('/v1/mailing_lists?per_page=10&page=1')
+        .reply(
+          200,
+          JSON.stringify({
+            items: [list],
+            metadata: { count: 1 },
+          }),
+        );
+
+      const response = await client.mailingLists.list();
+
+      expect(response.metadata.count).toEqual(1);
+      expect(response.items.length).toEqual(1);
+      expect(response.items[0]).toEqual(list);
+    });
+  });
+
+  describe('Getting mailing lists details', () => {
+    test('returns mailing list details', async () => {
+      nock('https://api.base-api.io')
+        .get('/v1/mailing_lists/list_id')
+        .reply(200, JSON.stringify(data));
+
+      const item = await client.mailingLists.get('list_id');
+
+      expect(item).toEqual(data);
+    });
+  });
+
   describe('Sending emails', () => {
     test('it sends emails to subscribers', async () => {
       nock('https://api.base-api.io')

@@ -3,6 +3,22 @@ const Check = require('check-types');
 const Endpoint = require('../Endpoint');
 
 class MailingLists extends Endpoint {
+  list(page = 1, perPage = 10) {
+    Check.assert.number(page);
+    Check.assert.number(perPage);
+
+    return this.requestJSON('GET', 'mailing_lists', {
+      per_page: perPage,
+      page,
+    });
+  }
+
+  get(id) {
+    Check.assert.string(id);
+
+    return this.requestJSON('GET', `mailing_lists/${id}`);
+  }
+
   subscribe(id, email) {
     Check.assert.maybe.string(email);
     Check.assert.maybe.string(id);
