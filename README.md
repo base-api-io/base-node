@@ -181,6 +181,32 @@ url =
     quality: 10)
 ```
 
+### Mailing Lists
+
+A project can have many mailing lists which can be managed from the interface.
+
+The `mailingLists` endpoint allows you to programatically subscribe / unsubscribe
+emails to a mailing list and send emails to all subscribes using a single call.
+
+```javascript
+// Subscribe an email to a mailing list.
+list =
+  await client.mailingLists.subscribe('mailing_list_id', 'test@user.com')
+
+// Unsubscribe an email from a mailing list.
+list =
+  await client.mailingLists.unsubscribe('mailing_list_id', 'test@user.com')
+
+// Send the same email to all of the subscribers
+results =
+  await client.mailingLists.send(
+      'mailing_list_id',
+      'subject',
+      'from@example.com',
+      'HTML',
+      'Text')
+```
+
 ## Development
 
 This library uses [Needle](https://www.npmjs.com/package/needle), you can run the CI tasks locally with `make`.

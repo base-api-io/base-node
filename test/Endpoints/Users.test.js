@@ -1,7 +1,6 @@
 const nock = require('nock');
 const Client = require('../../src/Client');
 
-
 describe('Users Endpoint', () => {
   const client = new Client('access_token');
 
@@ -15,12 +14,15 @@ describe('Users Endpoint', () => {
     test('returns a list of users', async () => {
       nock('https://api.base-api.io')
         .get('/v1/users?per_page=10&page=1')
-        .reply(200, JSON.stringify({
-          items: [userData],
-          metadata: {
-            count: 1,
-          },
-        }));
+        .reply(
+          200,
+          JSON.stringify({
+            items: [userData],
+            metadata: {
+              count: 1,
+            },
+          }),
+        );
 
       const response = await client.users.list();
 
@@ -53,11 +55,9 @@ describe('Users Endpoint', () => {
         .post('/v1/users/user_id')
         .reply(200, JSON.stringify(userData));
 
-      const user = await client.users.update(
-        'user_id',
-        'test@user.com',
-        { age: 32 },
-      );
+      const user = await client.users.update('user_id', 'test@user.com', {
+        age: 32,
+      });
 
       expect(user).toEqual(userData);
     });

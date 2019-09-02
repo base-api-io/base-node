@@ -1,3 +1,4 @@
+const MailingLists = require('./Endpoints/MailingLists');
 const Passwords = require('./Endpoints/Passwords');
 const Sessions = require('./Endpoints/Sessions');
 const Emails = require('./Endpoints/Emails');
@@ -7,6 +8,7 @@ const Files = require('./Endpoints/Files');
 
 class Client {
   constructor(accessToken, url = 'https://api.base-api.io') {
+    this.mailingLists = new MailingLists(accessToken, url);
     this.passwords = new Passwords(accessToken, url);
     this.sessions = new Sessions(accessToken, url);
     this.emails = new Emails(accessToken, url);

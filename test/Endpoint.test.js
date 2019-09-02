@@ -2,7 +2,6 @@ const nock = require('nock');
 const Endpoint = require('../src/Endpoint');
 const Errors = require('../src/Errors');
 
-
 describe('Endpoint', () => {
   const endpoint = new Endpoint('access_token', 'https://api.base-api.io');
 

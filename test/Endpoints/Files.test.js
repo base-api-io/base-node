@@ -13,10 +13,13 @@ describe('files Endpoint', () => {
     test('returns a list of files', async () => {
       nock('https://api.base-api.io')
         .get('/v1/files?per_page=10&page=1')
-        .reply(200, JSON.stringify({
-          items: [data],
-          metadata: { count: 1 },
-        }));
+        .reply(
+          200,
+          JSON.stringify({
+            items: [data],
+            metadata: { count: 1 },
+          }),
+        );
 
       const response = await client.files.list();
 

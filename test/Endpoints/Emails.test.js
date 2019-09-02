@@ -1,8 +1,7 @@
 const nock = require('nock');
 const Client = require('../../src/Client');
 
-
-describe('Users Endpoint', () => {
+describe('Emails Endpoint', () => {
   const client = new Client('access_token');
 
   const data = {

@@ -1,7 +1,6 @@
 const nock = require('nock');
 const Client = require('../../src/Client');
 
-
 describe('Sessions Endpoint', () => {
   const client = new Client('access_token');
 

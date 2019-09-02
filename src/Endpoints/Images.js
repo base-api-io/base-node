@@ -36,7 +36,10 @@ class Images extends Endpoint {
 
   imageUrl(id, quality, format, resize, crop) {
     Check.assert.maybe.like(crop, {
-      top: 0, left: 0, width: 0, height: 0,
+      top: 0,
+      left: 0,
+      width: 0,
+      height: 0,
     });
     Check.assert.maybe.like(resize, { width: 0, height: 0 });
     Check.assert.maybe.number(quality);
