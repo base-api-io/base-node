@@ -5,6 +5,7 @@ const Emails = require('./Endpoints/Emails');
 const Images = require('./Endpoints/Images');
 const Users = require('./Endpoints/Users');
 const Files = require('./Endpoints/Files');
+const Forms = require('./Endpoints/Forms');
 
 class Client {
   constructor(accessToken, url = 'https://api.base-api.io') {
@@ -15,6 +16,7 @@ class Client {
     this.images = new Images(accessToken, url);
     this.users = new Users(accessToken, url);
     this.files = new Files(accessToken, url);
+    this.forms = new Forms(accessToken, url);
   }
 }
 

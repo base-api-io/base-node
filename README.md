@@ -222,6 +222,48 @@ results =
       'Text')
 ```
 
+### Forms
+
+A project can have many forms and those form can have many submissions.
+
+The `forms` endpoint allows you to programatically create, submit and manage forms.
+
+```javascript
+// List forms
+forms = await client.forms.list(1, 10)
+forms.items     // The array of forms
+forms.metadata  // The metadata object containing the total count
+
+// Create a form
+form =
+  await client.forms.create('Form')
+
+// Get a form
+form =
+  await client.forms.get('form_id')
+
+// Delete a form (and it's submissions)
+form =
+  await client.forms.delete('form_id')
+
+// Submit a form
+submission =
+  await client.forms.submit('form_id', { key: 'value' })
+
+// List form submissions
+submissions = await client.forms.submissions('form_id', 1, 10)
+submissions.items     // The array of forms submissions
+submissions.metadata  // The metadata object containing the total count
+
+// Get a submission
+submission =
+  await client.forms.get_submission('form_id', 'submission_id')
+
+// Delete a submission
+submission =
+  await client.forms.delete_submission('form_id', 'submission_id')
+```
+
 ## Development
 
 This library uses [Needle](https://www.npmjs.com/package/needle), you can run the CI tasks locally with `make`.
