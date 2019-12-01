@@ -57,6 +57,13 @@ class Forms extends Endpoint {
     return this.requestJSON('GET', `forms/${id}/submissions/${submissionId}`);
   }
 
+  updateSubmission(id, submissionId, data) {
+    Check.assert.string(submissionId);
+    Check.assert.string(id);
+
+    return this.requestJSON('PUT', `forms/${id}/submissions/${submissionId}`, data);
+  }
+
   deleteSubmission(id, submissionId) {
     Check.assert.string(submissionId);
     Check.assert.string(id);

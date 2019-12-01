@@ -103,11 +103,11 @@ Using the `passwords` endpoint on the client you can perform a forgot password f
 ```javascript
 // Create an forgot password token for the user with the given email address.
 token =
-  client.passwords.forgot_password("test@user.com")
+  client.passwords.forgotPassword("test@user.com")
 
 // Using that token set a new password.
 user =
-  client.passwords.set_password(
+  client.passwords.setPassword(
     token.forgot_password_token,
     "123456",
     "123456")
@@ -190,13 +190,13 @@ emails to a mailing list and send emails to all subscribes using a single call.
 
 ```javascript
 // List mailing lists
-lists = await client.mailing_lists.list(page: 1, per_page: 10)
+lists = await client.mailingLists.list(page: 1, per_page: 10)
 lists.items     // The array of mailing lists
 lists.metadata  // The metadata object containing the total count
 
 // Get a mailing list by id
 list =
-  await client.mailing_lists.get('list_id')
+  await client.mailingLists.get('list_id')
 
 // Subscribe an email to a mailing list.
 list =
@@ -257,11 +257,15 @@ submissions.metadata  // The metadata object containing the total count
 
 // Get a submission
 submission =
-  await client.forms.get_submission('form_id', 'submission_id')
+  await client.forms.getSubmission('form_id', 'submission_id')
+
+// Update a submissions
+submission =
+  await client.forms.updateSubmission('form_id', 'submission_id', { key: 'value' })
 
 // Delete a submission
 submission =
-  await client.forms.delete_submission('form_id', 'submission_id')
+  await client.forms.deleteSubmission('form_id', 'submission_id')
 ```
 
 ## Development

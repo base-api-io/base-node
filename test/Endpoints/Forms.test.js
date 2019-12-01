@@ -111,6 +111,18 @@ describe('forms Endpoint', () => {
     });
   });
 
+  describe('Updating a form submission', () => {
+    test('it updates a form submission', async () => {
+      nock('https://api.base-api.io')
+        .put('/v1/forms/form_id/submissions/id')
+        .reply(200, JSON.stringify(submissionData));
+
+      const submission = await client.forms.updateSubmission('form_id', 'id', { key: 'value' });
+
+      expect(submission).toEqual(submissionData);
+    });
+  });
+
   describe('Delete a form submission', () => {
     test('returns the form submission', async () => {
       nock('https://api.base-api.io')
