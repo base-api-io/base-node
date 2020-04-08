@@ -30,7 +30,7 @@ or
 
    ```javascript
    client =
-     Client.new("your_access_token")
+     new Client("your_access_token")
    ```
 
 All functions return promises so you can chain them or just `await` them.
@@ -46,6 +46,7 @@ email =
     "Subject: Test Email"
     "from@example.com",
     "to@example.com",
+    "reply-to@example.com",
     "<b>Html message</b>",
     "Text message")
 ```
