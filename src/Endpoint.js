@@ -18,7 +18,7 @@ class Endpoint {
     const response = await this.request(method, path, data);
 
     try {
-      return JSON.parse(response.body, dateParser);
+      return JSON.parse(response.raw.toString(), dateParser);
     } catch (error) {
       throw new UnkownError(error);
     }
@@ -41,7 +41,7 @@ class Endpoint {
     if (response.statusCode === 401) {
       throw new Unauthorized();
     } else if (response.statusCode === 422) {
-      throw new InvalidRequest(JSON.parse(response.body));
+      throw new InvalidRequest(JSON.parse(response.raw.toString()));
     } else {
       return response;
     }
