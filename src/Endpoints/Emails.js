@@ -13,7 +13,8 @@ class Emails extends Endpoint {
     });
   }
 
-  send(subject, from, to, html, text) {
+  send(subject, from, to, replyTo, html, text) {
+    Check.assert.maybe.string(replyTo);
     Check.assert.maybe.string(html);
     Check.assert.maybe.string(text);
 
@@ -22,6 +23,7 @@ class Emails extends Endpoint {
     Check.assert.string(to);
 
     return this.requestJSON('POST', 'emails', {
+      reply_to: replyTo,
       subject,
       html,
       text,

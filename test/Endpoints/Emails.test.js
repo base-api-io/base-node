@@ -39,6 +39,7 @@ describe('Emails Endpoint', () => {
         'subject',
         'from@user.com',
         'to@user.com',
+        'reply-to@user.com',
         'html',
         'text',
       );
